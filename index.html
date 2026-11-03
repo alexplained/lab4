@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,28 +8,39 @@
 </head>
 <body>
 
-    <h2>Moja lokalizacja</h2>
-    <button onclick="pobierzLokalizacje()">
-        Pobierz lokalizację
-    </button>
+
     <p id="wynik"></p>
 
     <script>
-        function pobierzLokalizacje() {
-            navigator.geolocation.getCurrentPosition(
+
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(
                 function(pozycja) {
                     let szerokosc = pozycja.coords.latitude;
                     let dlugosc = pozycja.coords.longitude;
                     document.getElementById("wynik").innerHTML =
-                        "Szer: " + szerokosc +
-                        "<br>Długość: " + dlugosc;
+                        "Szerokość geograficzna: " + szerokosc +
+                        "<br>Długość geograficzna: " + dlugosc +
+                        "<br>Dokładność: " + pozycja.coords.accuracy + " m";
                 },
+
                 function() {
-                    alert("Nie udało się pobrać lokalizacji!");
+                    document.getElementById("wynik").innerHTML =
+                        "Nie udało się pobrać lokalizacji!";
+                },
+                {
+                    enableHighAccuracy: true,
+                    maximumAge: 0
                 }
             );
+
+        } else {
+            document.getElementById("wynik").innerHTML =
+                "Przeglądarka nie obsługuje geolokalizacji.";
         }
+
     </script>
 
 </body>
 </html>
+```
