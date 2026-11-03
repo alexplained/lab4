@@ -10,6 +10,9 @@
 
     <p id="wynik"></p>
 
+    <h2>Device Orientation</h2>
+    <p id="orientacja"></p>
+
     <script>
 
         if (navigator.geolocation) {
@@ -37,6 +40,19 @@
             document.getElementById("wynik").innerHTML =
                 "Przeglądarka nie obsługuje geolokalizacji.";
         }
+
+        window.addEventListener("deviceorientation", function(event) {
+
+            let alpha = event.alpha;
+            let beta = event.beta;
+            let gamma = event.gamma;
+
+            document.getElementById("orientacja").innerHTML =
+                "Alpha: " + alpha?.toFixed(2) +
+                "<br>Beta: " + beta?.toFixed(2) +
+                "<br>Gamma: " + gamma?.toFixed(2);
+
+        });
 
     </script>
 
