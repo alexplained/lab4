@@ -76,22 +76,29 @@
             navigator.vibrate(1000);
         }
 
-        screen.orientation.addEventListener("change", (event) => {
+        function sprawdzOrientacje() {
             switch (screen.orientation.type) {
                 case "landscape-primary":
-                    document.getElementById("ekran").innerHTML="Landscape";
+                    document.getElementById("ekran").innerHTML = "Landscape";
                     break;
+
                 case "landscape-secondary":
-                    document.getElementById("ekran").innerHTML="Odwrócony";
+                    document.getElementById("ekran").innerHTML = "Odwrócony";
                     break;
+
                 case "portrait-secondary":
                 case "portrait-primary":
-                    document.getElementById("ekran").innerHTML="Portretowy";
+                    document.getElementById("ekran").innerHTML = "Portretowy";
                     break;
+
                 default:
-                    document.getElementById("ekran").innerHTML="Brak wsparcia";
-                }
-        });
+                    document.getElementById("ekran").innerHTML = "Brak wsparcia";
+            }
+        }
+
+        sprawdzOrientacje();
+
+        screen.orientation.addEventListener("change", sprawdzOrientacje);
     </script>
 
 </body>
