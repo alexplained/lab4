@@ -1,0 +1,36 @@
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolokalizacja</title>
+</head>
+<body>
+
+    <h2>Moja lokalizacja</h2>
+    <button onclick="pobierzLokalizacje()">
+        Pobierz lokalizację
+    </button>
+    <p id="wynik"></p>
+
+    <script>
+        function pobierzLokalizacje() {
+            navigator.geolocation.getCurrentPosition(
+                function(pozycja) {
+                    let szerokosc = pozycja.coords.latitude;
+                    let dlugosc = pozycja.coords.longitude;
+                    document.getElementById("wynik").innerHTML =
+                        "Szer: " + szerokosc +
+                        "<br>Długość: " + dlugosc;
+                },
+                function() {
+                    alert("Nie udało się pobrać lokalizacji!");
+                }
+            );
+        }
+    </script>
+
+</body>
+</html>
+```
