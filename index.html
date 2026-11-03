@@ -18,6 +18,9 @@
 
     <button onclick="wibruj()">Wibracja</button>
 
+    <h2>Screen Orientation</h2>
+    <p id="ekran"></p>
+
     <script>
 
         if (navigator.geolocation) {
@@ -72,6 +75,23 @@
         function wibruj() {
             navigator.vibrate(1000);
         }
+
+        screen.orientation.addEventListener("change", (event) => {
+            switch (screen.orientation.type) {
+                case "landscape-primary":
+                    document.getElementById("ekran").innerHTML="Landscape";
+                    break;
+                case "landscape-secondary":
+                    document.getElementById("ekran").innerHTML="Odwrócony";
+                    break;
+                case "portrait-secondary":
+                case "portrait-primary":
+                    document.getElementById("ekran").innerHTML="Portretowy";
+                    break;
+                default:
+                    document.getElementById("ekran").innerHTML="Brak wsparcia";
+                }
+        });
     </script>
 
 </body>
