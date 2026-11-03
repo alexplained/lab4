@@ -16,6 +16,8 @@
     <h2>Device Motion</h2>
     <p id="ruch"></p>
 
+    <button onclick="wibruj()">Wibracja</button>
+
     <script>
 
         if (navigator.geolocation) {
@@ -67,6 +69,9 @@
                 "<br>Z: " + z?.toFixed(2);
         });
 
+        function wibruj() {
+            navigator.vibrate(1000);
+        }
     </script>
 
 </body>
