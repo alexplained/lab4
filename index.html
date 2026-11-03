@@ -79,11 +79,8 @@
         function sprawdzOrientacje() {
             switch (screen.orientation.type) {
                 case "landscape-primary":
-                    document.getElementById("ekran").innerHTML = "Landscape";
-                    break;
-
                 case "landscape-secondary":
-                    document.getElementById("ekran").innerHTML = "Odwrócony";
+                    document.getElementById("ekran").innerHTML = "Landscape";
                     break;
 
                 case "portrait-secondary":
